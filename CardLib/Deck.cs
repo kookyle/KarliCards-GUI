@@ -32,6 +32,32 @@ namespace CardLib
             cards = newCards;
         }
 
+        /// <summary>
+        /// Nondefault constructor. Allows aces to be set high.
+        /// </summary>
+        public Deck(bool isAceHigh) : this()
+        {
+            Card.isAceHigh = isAceHigh;
+        }
+        /// <summary>
+        /// Nonde fault constructor. Allows a trump suit to be used.
+        /// </summary>
+        public Deck(bool useTrumps, Suit trump) : this()
+        {
+            Card.useTrumps = useTrumps;
+            Card.trump = trump;
+        }
+        /// <summary>
+        /// Nondefault constructor. Allowss aces to be set high and a trump suit
+        /// to be used.
+        /// </summary>
+        public Deck(bool isAceHight, bool useTrumps, Suit trump) : this()
+        {
+            Card.isAceHigh = isAceHight;
+            Card.useTrumps = useTrumps;
+            Card.trump = trump;
+        }
+
         public Card GetCard(int cardNum)
         {
             if (cardNum >= 0 && cardNum <= 51)
