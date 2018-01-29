@@ -9,6 +9,8 @@ namespace CardLib
     {
         private Cards cards = new Cards();
 
+        public event EventHandler LastCardDrawn;
+
         public Deck()
         {
             // cards = new Card[52];
@@ -61,7 +63,11 @@ namespace CardLib
         public Card GetCard(int cardNum)
         {
             if (cardNum >= 0 && cardNum <= 51)
+            {
+                if ((cardNum == 51) && (LastCardDrawn != null))
+                    LastCardDrawn(this, EventArgs.Empty);
                 return cards[cardNum];
+            }
             else
                 throw new CardOutOfRange_Exception(cards.Clone() as Cards);
         }
